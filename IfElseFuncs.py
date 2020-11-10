@@ -149,9 +149,7 @@ def IfOutputIsqualTo(section, inputs):  #return true if comman's output (convert
     else:   
         print("Unknown type of type, exiting...")
         sys.exit()
-
-    print(subprocess.check_output(str(config[section]["commands"]).split(",")[0] + " || true", shell=True).decode("ascii"))
-    print(str(config[section]["result"]).encode('utf-8').decode('unicode_escape'))
+        
     if(Type == "Single"):
         if(str(subprocess.check_output(str(config[section]["commands"]).split(",")[0] + " || true", shell=True).decode("ascii")) == str(config[section]["result"]).encode('utf-8').decode('unicode_escape')):
             return True
