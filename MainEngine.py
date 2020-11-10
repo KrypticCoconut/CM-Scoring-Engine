@@ -2,20 +2,25 @@
 # Refer to wiki for usage
 # drink milk and have fun torturing peeople 
 
-try:
-    import configparser
-except:
-    from six.moves import configparser
+import configparser
 
 import subprocess
 import sys
 from IfElseFuncs import *
 import ast
 from datetime import datetime
-import gi
-gi.require_version('Notify', '0.7')
-from gi.repository import Notify
-Notify.init("CM-Report-Engine")
+
+try:
+    import gi
+    gi.require_version('Notify', '0.7')
+    from gi.repository import Notify
+except:
+
+
+try:
+    Notify.init("CM-Report-Engine")
+except:
+    pass
 
 
 
@@ -84,7 +89,10 @@ for section in Sections:
             gained += float(config[section]["points"])
             vulnsfixed += 1
             currentpoints +=  float(config[section]["points"])
-            Notify.Notification.new("Gained " + str(config[section]["points"]) + " pts").show()
+            try:
+                Notify.Notification.new("Gained " + str(config[section]["points"]) + " pts").show()
+            except:
+                pass
 
         
         if(float(config[section]["points"]) < 0):
@@ -92,12 +100,18 @@ for section in Sections:
             negetive += [section + ": " + str(config[section]["description"]) + " " + str(config[section]["points"] + "pts")]
             lost += float(config[section]["points"])
             currentpoints +=  float(config[section]["points"])
-            Notify.Notification.new("Lost " + str(config[section]["points"]) + " pts").show()
+            try:
+                Notify.Notification.new("Lost " + str(config[section]["points"]) + " pts").show()
+            except:
+                pass
         
         if(float(config[section]["points"]) == 0):
         
             extra += [section + ": " + str(config[section]["description"]) + " " + str(config[section]["points"] + "pts")]
-            Notify.Notification.new("Completed extra question").show()
+            try:
+                Notify.Notification.new("Completed extra question").show()
+            except:
+                pass
         
 
 
