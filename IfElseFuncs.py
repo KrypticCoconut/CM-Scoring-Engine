@@ -1,7 +1,14 @@
 import os
 import subprocess
 import sys
-import configparser
+try:
+    import configparser
+except:
+    try:
+        from six.moves import configparser
+    except:
+        print("Cant import modules config parser exitting")
+        sys.exit()
 
 file = 'config.ini'
 config = configparser.RawConfigParser()
