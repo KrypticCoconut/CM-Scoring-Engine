@@ -1,6 +1,6 @@
 # About
 
-Cm scoring engine stans for confugurable modular scoring engine, it uses modules to asses if a vuln is fixed or not, you can add your own module (refer to wiki if you dont understand what i mean by modules) of code for extra functionality.
+Cm scoring engine stands for confugurable modular scoring engine, it is a python3 based scoring engine that uses modules to asses if a vuln is fixed or not, you can add your own module (refer to wiki if you dont understand what i mean by modules) of code for extra functionality.
 
  modules are basically functions which take parameters from the conf file and calculate if the vuln is fixed/points should be given (like one takes a command and if the output is the result variable defined in the conf file, it will give points), you can decide which module you wanna use for a question or make ur own :)
 
@@ -30,7 +30,7 @@ after youre done making your config, You can make a cronjob or a systemd timer f
 you have to edit `/etc/crontab` and add this line
 
 ```
-* * * * * root python3 /path/to/MainEngine.py # make sure you use python2 or you will get errors
+* * * * * root python3 /path/to/MainEngine.py # make sure you use python3 or you will get errors
 ```
 
 this will run the engine every 1 minute :)
