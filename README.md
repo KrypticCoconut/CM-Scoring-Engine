@@ -17,7 +17,6 @@ Im using ubuntu 18 for my images (what CyberPat uses)
 ```
 sudo apt-get install python-minimal python-pip python-gobject libnotify-bin libnotify-dev libnotify-cil-dev
 pip install configparser #this is for ubuntu 18.04 but install these for your distro
-pip install configparser
 cd /opt
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 ```
