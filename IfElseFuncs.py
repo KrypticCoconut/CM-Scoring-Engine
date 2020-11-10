@@ -57,9 +57,7 @@ def ReturnTrue(section, inputs):  #return true true if command gives a return of
     if(Type == "Single"):
         try:
             subprocess.check_output(str(config[section]["commands"]).split(",")[0], shell=True)
-            print("hi")
             return True
-            print("he")
         except subprocess.CalledProcessError:
             return False
     elif(Type == "Multi"):
