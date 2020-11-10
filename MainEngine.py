@@ -15,6 +15,7 @@ try:
     gi.require_version('Notify', '0.7')
     from gi.repository import Notify
 except:
+    pass
 
 
 try:
