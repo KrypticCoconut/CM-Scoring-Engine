@@ -13,7 +13,7 @@ Refer to wiki for usage
 ## Installation
 Installation is simple enough
 
-Im using ubuntu 18 for my images
+Im using ubuntu 18 for my images, there is some wierd python2 issues in ubuntu 20, im still working on importing this to python3
 ```
 sudo apt-get python-pip python-minimal python-gobject libnotify-bin libnotify-dev libnotify-cil-dev
 pip install configparser
