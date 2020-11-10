@@ -13,10 +13,10 @@ Refer to wiki for usage
 ## Installation
 Installation is simple enough
 
-Im using ubuntu 18 for my images, there is some wierd python2 issues in ubuntu 20, im still working on importing this to python3, you can proabbly get this runnign with 20 but you will need to instal some extra modukes and stuff - tbh a hasstle
 ```
+sudo apt-get install git python3 python3-pip python-gobject libnotify-bin libnotify-dev # ubuntu 18
 sudo apt-get python-pip python-minimal python-gobject libnotify-bin libnotify-dev libnotify-cil-dev
-pip install configparser
+
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 ```
 
