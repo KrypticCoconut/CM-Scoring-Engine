@@ -13,7 +13,7 @@ Refer to wiki for usage
 ## Installation
 Installation is simple enough
 
-Im using ubuntu 18 for my images (what CyberPat uses)
+Im using ubuntu 20 for my images
 ```
 sudo apt-get install python-minimal python-pip python-gobject libnotify-bin libnotify-dev libnotify-cil-dev
 pip install configparser #this is for ubuntu 18.04 but install these for your distro
