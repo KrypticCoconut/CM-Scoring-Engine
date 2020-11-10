@@ -2,8 +2,11 @@
 # Refer to wiki for usage
 # drink milk and have fun torturing peeople 
 
-import configparser
-import os
+try:
+    import configparser
+except:
+    from six.moves import configparser
+
 import subprocess
 import sys
 from IfElseFuncs import *
