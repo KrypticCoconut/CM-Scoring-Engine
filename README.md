@@ -12,8 +12,11 @@ Refer to wiki for usage
 
 ## Installation
 Installation is simple enough
+
+Im using ubuntu 18 for my images (what CyberPat uses)
 ```
-sudo apt-get install python2 #this is for ubuntu 20.04 but install python2 for your distro
+sudo apt-get install python-minimal python-pip python-gobject libnotify-bin libnotify-dev libnotify-cil-dev
+pip install configparser #this is for ubuntu 18.04 but install these for your distro
 cd /opt
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 ```
