@@ -13,10 +13,9 @@ Refer to wiki for usage
 ## Installation
 Installation is simple enough
 
-Im using ubuntu 20 for my images
-You will need to have python2.7 and dpip installed - not gonna show it hee because it is diff for every ubuntu versio, just look it up :)
+Im using ubuntu 18 for my images
 ```
-sudo apt-get python-gobject libnotify-bin libnotify-dev libnotify-cil-dev
+sudo apt-get python-pip python-minimal python-gobject libnotify-bin libnotify-dev libnotify-cil-dev
 pip install configparser
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 ```
