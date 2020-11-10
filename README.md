@@ -15,8 +15,7 @@ Installation is simple enough
 
 ```
 sudo apt-get install git python3 python3-pip python-gobject libnotify-bin libnotify-dev # ubuntu 18
-sudo apt-get python-pip python-minimal python-gobject libnotify-bin libnotify-dev libnotify-cil-dev
-
+cd /opt
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 ```
 
