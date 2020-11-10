@@ -30,7 +30,7 @@ after youre done making your config, You can make a cronjob or a systemd timer f
 you have to edit `/etc/crontab` and add this line
 
 ```
-* * * * * root python2 /path/to/MainEngine.py # make sure you use python2 or you will get errors
+* * * * * root python3 /path/to/MainEngine.py # make sure you use python2 or you will get errors
 ```
 
 this will run the engine every 1 minute :)
