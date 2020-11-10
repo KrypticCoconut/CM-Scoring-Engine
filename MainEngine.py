@@ -7,15 +7,7 @@ from IfElseFuncs import *
 import ast
 from datetime import datetime
 
-try:
-    import configparser
-except:
-    try:
-        from six.moves import configparser
-    except:
-        print("Cant import modules config parser exitting")
-        sys.exit()
-
+import configparser
 
 try:
     import gi
