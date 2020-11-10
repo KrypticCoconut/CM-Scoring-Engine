@@ -32,4 +32,5 @@ you have to edit `/etc/crontab` and add this line
 ```
 
 this will run the engine every 1 minute :)
+You can link the html file to the desktop to make it appear on it and thats it!
 
