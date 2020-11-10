@@ -19,7 +19,7 @@ git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 
 Inside the folder will be a `MainEngine.py` this is the main engine that controls the config and modules, -  best not to mess with this, `config.ini` this the config file where you add your vulns and stuff, `IfElseFuncs.pyc` this is the modules file where you can add more modules that you call from config file, if this sounds confusing, head to the wiki, everything is explained much more clearly.
 
- modules are basically functions which take parameters from the conf file and calculate if the vuln is fixed/points should be given (like one takes a command and if the output is the result var defined in the conf file, it will give points), you can decide which module you wanna use for a question or make ur own :)
+ modules are basically functions which take parameters from the conf file and calculate if the vuln is fixed/points should be given (like one takes a command and if the output is the result variable defined in the conf file, it will give points), you can decide which module you wanna use for a question or make ur own :)
 
 head to the wiki to understand how to configure your config to use different modules and all that fun stuffz
 
