@@ -1,14 +1,21 @@
 # Code Written by KrypticCoconut
 # Refer to wiki for usage
 # drink milk and have fun torturing peeople 
-
-import configparser
-
 import subprocess
 import sys
 from IfElseFuncs import *
 import ast
 from datetime import datetime
+
+try:
+    import configparser
+except:
+    try:
+        from six.moves import configparser
+    except:
+        print("Cant import modules config parser exitting")
+        sys.exit()
+
 
 try:
     import gi
