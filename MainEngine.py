@@ -9,18 +9,10 @@ from datetime import datetime
 
 import configparser
 
-try:
-    import gi
-    gi.require_version('Notify', '0.7')
-    from gi.repository import Notify
-except:
-    pass
-
-
-try:
-    Notify.init("CM-Report-Engine")
-except:
-    pass
+import gi
+gi.require_version('Notify', '0.7')
+from gi.repository import Notify
+Notify.init("CM-Report-Engine")
 
 
 
@@ -89,10 +81,7 @@ for section in Sections:
             gained += float(config[section]["points"])
             vulnsfixed += 1
             currentpoints +=  float(config[section]["points"])
-            try:
-                Notify.Notification.new("Gained " + str(config[section]["points"]) + " pts").show()
-            except:
-                pass
+            Notify.Notification.new("Gained " + str(config[section]["points"]) + " pts").show()
 
         
         if(float(config[section]["points"]) < 0):
@@ -100,18 +89,12 @@ for section in Sections:
             negetive += [section + ": " + str(config[section]["description"]) + " " + str(config[section]["points"] + "pts")]
             lost += float(config[section]["points"])
             currentpoints +=  float(config[section]["points"])
-            try:
-                Notify.Notification.new("Lost " + str(config[section]["points"]) + " pts").show()
-            except:
-                pass
-        
+            Notify.Notification.new("Lost " + str(config[section]["points"]) + " pts").show()
+    
         if(float(config[section]["points"]) == 0):
         
             extra += [section + ": " + str(config[section]["description"]) + " " + str(config[section]["points"] + "pts")]
-            try:
-                Notify.Notification.new("Completed extra question").show()
-            except:
-                pass
+            Notify.Notification.new("Completed extra question").show()
         
 
 
