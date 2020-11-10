@@ -10,8 +10,9 @@ Refer to wiki for usage
 ## Installation
 Installation is simple enough
 ```
+sudo apt-get install python2 #this is for ubuntu 20.04 but install python2 for your distro
 cd /opt
-https://github.com/PineMaster/CM-Scoring-Engine.git
+git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 ```
 
 ## Setup
@@ -26,7 +27,7 @@ after youre done making your config, You can make a cronjob or a systemd timer f
 you have to edit `/etc/crontab` and add this line
 
 ```
-* * * * * root python 3 /path/to/MainEngine.py
+* * * * * root python2 /path/to/MainEngine.py # make sure you use python2 or you will get errors
 ```
 
 this will run the engine every 1 minute :)
