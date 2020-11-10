@@ -14,7 +14,8 @@ Refer to wiki for usage
 Installation is simple enough
 
 ```
-sudo apt-get install git python3 python3-pip python-gobject libnotify-bin libnotify-dev # ubuntu 18
+sudo apt-get install git python3 python3-pip python-gobject libnotify-bin libnotify-dev # ubuntu 20
+sudo apt-get install python3-pip python3 python-gobject libnotify-bin libnotify-dev libnotify-cil-dev git #ubuntu 18
 cd /opt
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 ```
@@ -38,6 +39,5 @@ You can link the html file to the desktop to make it appear on it and thats it!
 Common errors are documented in the wiki
 
 # Todo
-Fix notifications, theres a bug where it doesnt work on gnome
 
 Add error logging so it isnt just print()
