@@ -70,7 +70,7 @@ lost = 0
 
 DoneForNotifications = []
 pointsnow1 = 0
-sectionsansweredfile1 = open(pathlib.Path(__file__).parent.absolute() + "/TmpData/answered.txt", "r")
+sectionsansweredfile1 = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "r")
 sectionsanswered1 = sectionsansweredfile1.readlines()
 sectionsanswered1 = list(map(str.strip, sectionsanswered1))
 
@@ -116,7 +116,7 @@ for section in Sections:
         if(section in DoneForNotifications):
             DoneForNotifications.remove(section)
 
-file = open(pathlib.Path(__file__).parent.absolute() + "/TmpData/answered.txt", "w")
+file = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "w")
 for donefor in DoneForNotifications:
     file.write(donefor + "\n")
 
@@ -124,7 +124,7 @@ file.close()
 
 
 pointsnow2 = 0
-sectionsansweredfile2 = open("TmpData/answered.txt", "r")
+sectionsansweredfile2 = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "r")
 sectionsanswered2 = sectionsansweredfile2.readlines()
 sectionsanswered2 = list(map(str.strip, sectionsanswered2))
 print(sectionsanswered2)
