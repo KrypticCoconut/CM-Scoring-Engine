@@ -7,6 +7,7 @@ from IfElseFuncs import *
 import ast
 from datetime import datetime
 from playsound import playsound
+import pathlib
 
 import gi
 gi.require_version('Notify', '0.7')
@@ -69,7 +70,7 @@ lost = 0
 
 DoneForNotifications = []
 pointsnow1 = 0
-sectionsansweredfile1 = open("TmpData/answered.txt", "r")
+sectionsansweredfile1 = open(pathlib.Path(__file__).parent.absolute() + "/TmpData/answered.txt", "r")
 sectionsanswered1 = sectionsansweredfile1.readlines()
 sectionsanswered1 = list(map(str.strip, sectionsanswered1))
 
@@ -115,7 +116,7 @@ for section in Sections:
         if(section in DoneForNotifications):
             DoneForNotifications.remove(section)
 
-file = open("TmpData/answered.txt", "w")
+file = open(pathlib.Path(__file__).parent.absolute() + "/TmpData/answered.txt", "w")
 for donefor in DoneForNotifications:
     file.write(donefor + "\n")
 
