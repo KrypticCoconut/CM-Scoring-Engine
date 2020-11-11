@@ -1,7 +1,7 @@
 import os
 import subprocess
 import sys
-
+import re
 import configparser
 
 file = 'config.ini'
@@ -149,7 +149,7 @@ def IfOutputIsqualTo(section, inputs):  #return true if comman's output (convert
     else:   
         print("Unknown type of type, exiting...")
         sys.exit()
-        
+
     if(Type == "Single"):
         if(str(subprocess.check_output(str(config[section]["commands"]).split(",")[0] + " || true", shell=True).decode("ascii")) == str(config[section]["result"]).encode('utf-8').decode('unicode_escape')):
             return True
@@ -215,3 +215,23 @@ def TrueIfOutputIsqualTo(command, outputresult):
             return False
 
 #------------------------------------------------------------------------NEW FUNCTION-------------------------------------------------------------------------------
+
+def CommandRegex(section, inputs):  #return true true if command gives a return of 1 else 0
+    requiredinputs = ["regex",  "command", "function", "description", "points"]
+    if(checkenoughinputs(inputs, requiredinputs)):
+        pass
+    else:
+        print("missing/extra input for section " + section)
+        sys.exit()
+    
+    string = subprocess.check_output(config[section]["command"] + " || true", shell=True).decode("ascii")
+    try:
+        x = re.findall(r'' + config[section]["regex"]+'', string)
+    except:
+        print("Invalid regex, exiting")
+        sys.exit()
+
+    if(len(x) > 0):
+        return True
+    else:
+        return False
