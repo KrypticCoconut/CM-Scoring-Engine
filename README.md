@@ -16,6 +16,7 @@ Installation is simple enough
 ```
 sudo apt-get install git python3 python3-pip python-gobject libnotify-bin libnotify-dev # ubuntu 20
 sudo apt-get install python3-pip python3 python-gobject libnotify-bin libnotify-dev libnotify-cil-dev git #ubuntu 18
+pip3 install playsound
 cd /opt
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 ```
