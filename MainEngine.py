@@ -15,8 +15,8 @@ from gi.repository import Notify
 Notify.init("CM-Report-Engine")
 
 
-pointsgainedmp3 = "sounds/PointsGained.mp3"
-pointslostmp3 = "sounds/PointsLost.mp3"
+pointsgainedmp3 = str(pathlib.Path(__file__).parent.absolute()) +"/sounds/PointsGained.mp3"
+pointslostmp3 = str(pathlib.Path(__file__).parent.absolute()) +"/sounds/PointsLost.mp3"
 
 
 
@@ -49,7 +49,7 @@ def CheckStuff():
 
 
 
-file = 'config.ini'
+file = str(pathlib.Path(__file__).parent.absolute()) +'/config.ini'
 config = configparser.RawConfigParser()
 config.read(file)
 
@@ -153,7 +153,7 @@ for negetives in negetive:
 for extras in extra:
     extrastr += "<p> [+]   "+str(extras)+"</p>\n"
 
-index = open('index.html','w')
+index = open(str(pathlib.Path(__file__).parent.absolute()) +'/index.html','w')
 indexfile = """
 <html>
     <style>
