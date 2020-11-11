@@ -3,11 +3,12 @@
 # drink milk and have fun torturing peeople 
 import subprocess
 import sys
-from IfElseFuncs import *
 import ast
 from datetime import datetime
 from playsound import playsound
 import pathlib
+sys.path.insert(0, str(pathlib.Path(__file__).parent.absolute()) + "/")
+from IfElseFuncs import *
 
 import gi
 gi.require_version('Notify', '0.7')
@@ -50,6 +51,7 @@ def CheckStuff():
 
 
 file = str(pathlib.Path(__file__).parent.absolute()) +'/config.ini'
+print(file)
 config = configparser.RawConfigParser()
 config.read(file)
 
@@ -81,6 +83,7 @@ for sections1 in sectionsanswered1:
 
 Sections = config.sections()
 for section in Sections:
+    print(str(config[section]["Function"]))
     CheckStuff()
     if(float(config[section]["points"]) > 0):
         vulnstotal += 1

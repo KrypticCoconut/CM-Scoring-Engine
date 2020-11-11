@@ -3,8 +3,9 @@ import subprocess
 import sys
 import re
 import configparser
+import pathlib
 
-file = 'config.ini'
+file = str(pathlib.Path(__file__).parent.absolute()) + '/config.ini'
 config = configparser.RawConfigParser()
 config.read(file)
 
