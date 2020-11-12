@@ -21,24 +21,6 @@ cd /opt
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
 ```
 
-## Setup
-
-Inside the folder will be a `MainEngine.py` this is the main engine that controls the config and modules, -  best not to mess with this, `config.ini` this the config file where you add your vulns and stuff, `IfElseFuncs.pyc` this is the modules file where you can add more modules that you call from config file, if this sounds confusing, head to the wiki, everything is explained much more clearly.
-
-head to the wiki to understand how to configure your config to use different modules and all that fun stuffz
-
-after youre done making your config, You can make a cronjob or a systemd timer for the `MainEngine.py` so it actually runs the engine, ill be making a cronjob that runs this every 
-you have to edit `/etc/crontab` and add this line
-
-```
-* * * * * root python3 /path/to/MainEngine.py # make sure you use python3 or you will get errors
-```
-
-this will run the engine every 1 minute :)
-You can link the html file to the desktop to make it appear on it and thats it!
-
-Common errors are documented in the wiki
-
 # Todo
 
 Add error logging so it isnt just print()
