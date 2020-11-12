@@ -236,3 +236,50 @@ def CommandRegex(section, inputs):  #return true true if command gives a return 
         return True
     else:
         return False
+
+
+
+def IfNotOutput(section, inputs): #return true true if command gives any output else 0, #note stderr isnt counted as output
+    requiredinputs = ["type",  "commands", "function", "description", "points"]
+    if(checkenoughinputs(inputs, requiredinputs)):
+        pass
+    else:
+        print("missing/extra input for section " + section)
+        sys.exit()
+    Type = config[section]["Type"]
+
+
+    if(Type == "Single"):
+        if(len(str(config[section]["commands"]).split(",")) > 1 ):
+            print("more than one command on certain section Exiting....")
+            sys.exit()
+
+    elif(Type == "Multi"):
+        if(len(str(config[section]["commands"]).split(",")) < 2 ):
+            print("less thantwo command on certain section Exiting....")
+            sys.exit()
+    
+    elif(Type == "OneOrOther"):
+        if(len(str(config[section]["commands"]).split(",")) < 2 ):
+            print("less thantwo command on certain section Exiting....")
+            sys.exit()
+    else:
+        print("Unknown type of type, exiting...")
+        sys.exit()
+
+
+    if(Type == "Single"):
+        if(subprocess.check_output(str(config[section]["commands"]).split(",")[0] + " || true", shell=True)):
+            return False
+        else:
+            return True
+    elif(Type == "Multi"):
+            for command in str(config[section]["commands"]).split(","):
+                if(subprocess.check_output(command + " || true", shell=True)):
+                    return False    
+            return True
+    elif(Type == "OneOrOther"):
+            for command in str(config[section]["commands"]).split(","):
+                if(not subprocess.check_output(command + " || true", shell=True)):
+                    return True
+            return False
