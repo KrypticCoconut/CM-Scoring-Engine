@@ -1,1 +1,0 @@
-ERROR:root:Error occurred g-spawn-exit-error-quark: Error spawning command line “dbus-launch --autolaunch=1dd1131ead7d4d0bb2f8fbc3f4644cd6 --binary-syntax --close-stderr”: Child process exited with code 1 (1)

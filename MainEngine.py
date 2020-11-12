@@ -11,9 +11,9 @@ import pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).parent.absolute()) + "/")
 from IfElseFuncs import *
 import gi
-gi.require_version('Notify', '0.7')
-from gi.repository import Notify
-Notify.init("CM-Report-Engine")
+#gi.require_version('Notify', '0.7')
+#from gi.repository import Notify
+#Notify.init("CM-Report-Engine")
 
 
 pointsgainedmp3 = str(pathlib.Path(__file__).parent.absolute()) +"/sounds/PointsGained.mp3"
@@ -103,21 +103,15 @@ for section in Sections:
             gained += float(config[section]["points"])
             vulnsfixed += 1
             currentpoints +=  float(config[section]["points"])
-            #Notify.Notification.new("Gained " + str(config[section]["points"]) + " pts").show()
-            #playsound(pointsgainedmp3)
 
         
         if(float(config[section]["points"]) < 0):   
             negetive += [section + ": " + str(config[section]["description"]) + " " + str(config[section]["points"] + "pts")]
             lost += float(config[section]["points"])
             currentpoints +=  float(config[section]["points"])
-            #Notify.Notification.new("Lost " + str(config[section]["points"]) + " pts").show()
-            #playsound(pointslostmp3)
     
         if(float(config[section]["points"]) == 0):
             extra += [section + ": " + str(config[section]["description"]) + " " + str(config[section]["points"] + "pts")]
-            #Notify.Notification.new("Completed extra question").show()
-            #playsound(pointsgainedmp3)
     else:
         if(section in DoneForNotifications):
             DoneForNotifications.remove(section)
@@ -143,11 +137,13 @@ pointsgainednotif = pointsnow2 - pointsnow1
 print(pointsgainednotif)
 
 if(pointsgainednotif > 0):
-        Notify.Notification.new("Gained " + str(pointsgainednotif) + " pts").show()
-        playsound(pointsgainedmp3)
+    pass
+        #Notify.Notification.new("Gained " + str(pointsgainednotif) + " pts").show()
+        #playsound(pointsgainedmp3)
 elif(pointsgainednotif < 0):
-        Notify.Notification.new("Lost " + str(pointsgainednotif) + " pts").show()
-        playsound(pointsgainedmp3)
+    pass
+        #Notify.Notification.new("Lost " + str(pointsgainednotif) + " pts").show()
+        #playsound(pointsgainedmp3)
 
 
 for positives in positive:
@@ -195,4 +191,4 @@ indexfile = """
 """
 index.write(indexfile)
 
-Notify.uninit()
+#Notify.uninit()
