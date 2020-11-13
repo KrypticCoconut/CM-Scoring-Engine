@@ -12,17 +12,14 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.absolute()) + "/")
 from IfElseFuncs import *
 import gi
 import argparse
+import notify2
 
 #from playsound import playsound   #Musicib
 
-#gi.require_version('Notify', '0.7') #notification lib
-#from gi.repository import Notify
-#Notify.init("CM-Report-Engine")
 
 
 pointsgainedmp3 = str(pathlib.Path(__file__).parent.absolute()) +"/sounds/PointsGained.mp3"
 pointslostmp3 = str(pathlib.Path(__file__).parent.absolute()) +"/sounds/PointsLost.mp3"
-
 
 
 def Main(section):
@@ -110,19 +107,19 @@ previousanswered = list(map(str.strip,file.readlines()))
 previouspoints = 0
 file.close()
 
+notify2.init("CM-Scoring-Engine")
+
 for previousanswer in previousanswered:
     if previousanswer in config.sections():
         previouspoints += float(config[previousanswer]["points"])
 
 pointsincreasedby = currentpoints - previouspoints
 if(pointsincreasedby > 0):
-    pass
-        #Notify.Notification.new("Gained " + str(pointsgainednotif) + " pts").show()
-        #playsound(pointsgainedmp3)
+    notify2.Notification("Gained " + str(pointsincreasedby) + " pts").show()
+    #playsound(pointsgainedmp3)
 elif(pointsincreasedby < 0):
-    pass
-        #Notify.Notification.new("Lost " + str(pointsgainednotif) + " pts").show()
-        #playsound(pointsgainedmp3)
+    notify2.Notification("Lost " + str(pointsincreasedby) + " pts").show()
+    #playsound(pointsgainedmp3)
 file = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "w")
 for done in questionsdone:
     file.write(done + "\n")
@@ -176,7 +173,7 @@ indexfile = """
 """
 index.write(indexfile)
 
-#Notify.uninit()
+notify2.uninit()
 
 my_parser = argparse.ArgumentParser(description='Code Written by krypt')
 
