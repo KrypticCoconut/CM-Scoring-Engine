@@ -99,6 +99,9 @@ for section in config.sections():
 
     totalpoints += float(config[section]["points"])
 
+if(not os.path.exists(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt")):
+    subprocess.check_output("touch " + str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt 2>/dev/null || true", shell=True)
+    
 file = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "r")
 previousanswered = list(map(str.strip,file.readlines()))
 previouspoints = 0
