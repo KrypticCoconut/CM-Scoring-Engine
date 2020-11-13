@@ -8,6 +8,7 @@ import ast
 from datetime import datetime
 from playsound import playsound
 import pathlib
+import time
 sys.path.insert(0, str(pathlib.Path(__file__).parent.absolute()) + "/")
 from IfElseFuncs import *
 import gi
@@ -26,35 +27,35 @@ def Main(section, Function):
     possibles.update(locals())
     method = possibles.get(Function)
     if(not method):
-        print("Non defined function, exiting")
+        logging.warning("Non defined function in section "+ section+",  exiting...")
         sys.exit()
     else:
         return method(section,config.options(section))
 
-def CheckStuff():
+def CheckStuff(section):
     try:
         TrueIf = str(config[section]["points"])
     except KeyError:
-        print("points does not exist in section " + section + " exiting...")
+        print("hi")
+        logging.warning("points does not exist in section " + section + " exiting...")
         sys.exit()
     try:
         TrueIf = str(config[section]["description"])
     except KeyError:
-        print("description does not exist in section " + section + " exiting...")
+        prlogging.warningint("description does not exist in section " + section + " exiting...")
         sys.exit()
     try:
         TrueIf = str(config[section]["Function"])
     except KeyError:
-        print("Function does not exist in section " + section + " exiting...")
+        logging.warning("Function does not exist in section " + section + " exiting...")
         sys.exit()
 
+os.system("sudo rm -f " + str(pathlib.Path(__file__).parent.absolute())+'/TmpData/ScoringEngine.log 2>/dev/null || true')
 
-
-subprocess.check_output("sudo rm -rf " + str(pathlib.Path(__file__).parent.absolute())+'/TmpData/ScoringEngine.log 2>/dev/null || true', shell=True)
+time.sleep(2)
 logging.basicConfig(filename=str(pathlib.Path(__file__).parent.absolute())+'/TmpData/ScoringEngine.log',level=logging.INFO)
 
 file = str(pathlib.Path(__file__).parent.absolute()) +'/config.ini'
-print(file)
 config = configparser.RawConfigParser()
 config.read(file)
 
@@ -73,6 +74,7 @@ extra = []
 gained = 0
 lost = 0
 
+
 DoneForNotifications = []
 pointsnow1 = 0
 sectionsansweredfile1 = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "r")
@@ -81,19 +83,15 @@ sectionsanswered1 = list(map(str.strip, sectionsanswered1))
 
 for sections1 in sectionsanswered1:
     pointsnow1 += float(config[sections1]["points"])
-    print(config[sections1]["points"])
 
 
 Sections = config.sections()
 for section in Sections:
-    print(str(config[section]["Function"]))
-    CheckStuff()
+    CheckStuff(section)
     if(float(config[section]["points"]) > 0):
         vulnstotal += 1
         totalpoints += float(config[section]["points"])
     result = Main(section, str(config[section]["Function"]))
-    #string = str(config[section]["result"].encode('utf-8').decode('unicode_escape'))
-    #print(ast.literal_eval(string))
     if(result == True):
         if(section not in DoneForNotifications):
             DoneForNotifications += [section]
@@ -108,13 +106,16 @@ for section in Sections:
         if(float(config[section]["points"]) < 0):   
             negetive += [section + ": " + str(config[section]["description"]) + " " + str(config[section]["points"] + "pts")]
             lost += float(config[section]["points"])
-            currentpoints +=  float(config[section]["points"])
+            currentpoints +=  float(config[section]["points"])  
     
         if(float(config[section]["points"]) == 0):
             extra += [section + ": " + str(config[section]["description"]) + " " + str(config[section]["points"] + "pts")]
-    else:
+    elif result == False:
         if(section in DoneForNotifications):
             DoneForNotifications.remove(section)
+    else:
+        logging.warning(result)
+        sys.exit()
 
 file = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "w")
 for donefor in DoneForNotifications:
@@ -127,14 +128,11 @@ pointsnow2 = 0
 sectionsansweredfile2 = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "r")
 sectionsanswered2 = sectionsansweredfile2.readlines()
 sectionsanswered2 = list(map(str.strip, sectionsanswered2))
-print(sectionsanswered2)
 
 for sections2 in sectionsanswered2:
     pointsnow2 += float(config[sections2]["points"])
-    print(config[sections2]["points"])
 
 pointsgainednotif = pointsnow2 - pointsnow1
-print(pointsgainednotif)
 
 if(pointsgainednotif > 0):
     pass
