@@ -112,7 +112,7 @@ def IfOutput(section, inputs): #return true true if command gives any output els
 #------------------------------------------------------------------------NEW FUNCTION-------------------------------------------------------------------------------
 
 
-def IfOutputIsqualTo(section, inputs):  #return true if comman's output (converted to string) is equal to given phrase (also converted to string), #note stderr isnt counted as output
+def IfOutputIsEqualTo(section, inputs):  #return true if comman's output (converted to string) is equal to given phrase (also converted to string), #note stderr isnt counted as output
     requiredinputs = ["type",  "commands", "function", "description", "points", "result"]
     if(checkenoughinputs(inputs, requiredinputs)):
         pass
