@@ -6,13 +6,16 @@ import subprocess
 import sys
 import ast
 from datetime import datetime
-from playsound import playsound
 import pathlib
 import time
 sys.path.insert(0, str(pathlib.Path(__file__).parent.absolute()) + "/")
 from IfElseFuncs import *
 import gi
-#gi.require_version('Notify', '0.7')
+import argparse
+
+#from playsound import playsound   #Musicib
+
+#gi.require_version('Notify', '0.7') #notification lib
 #from gi.repository import Notify
 #Notify.init("CM-Report-Engine")
 
@@ -101,7 +104,7 @@ for section in config.sections():
 
 if(not os.path.exists(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt")):
     subprocess.check_output("touch " + str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt 2>/dev/null || true", shell=True)
-    
+
 file = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "r")
 previousanswered = list(map(str.strip,file.readlines()))
 previouspoints = 0
@@ -174,3 +177,15 @@ indexfile = """
 index.write(indexfile)
 
 #Notify.uninit()
+
+my_parser = argparse.ArgumentParser(description='Code Written by krypt')
+
+my_parser.add_argument('--test', action='store_true', help='Specify if test run or not, so the program doesnt store the answered questions in a file')
+
+args = my_parser.parse_args()
+
+test = args.test
+if(test):
+    print("hi")
+    subprocess.check_output("rm -rf " + str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt 2>/dev/null || true", shell=True)
+
