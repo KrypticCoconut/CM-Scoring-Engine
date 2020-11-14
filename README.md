@@ -23,7 +23,7 @@ sudo -H pip3 install playsound notify2
 configure notification daemon `sudo nano /usr/share/dbus-1/services/org.freedesktop.Notifications.service`
 and write this in that
 ```
-D-BUS Service]
+[D-BUS Service]
 Name=org.freedesktop.Notifications
 Exec=/usr/lib/notification-daemon/notification-daemon
 ```
