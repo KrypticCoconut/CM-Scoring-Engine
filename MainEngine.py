@@ -116,10 +116,10 @@ for previousanswer in previousanswered:
 pointsincreasedby = currentpoints - previouspoints
 if(pointsincreasedby > 0):
     notify2.Notification("Gained " + str(pointsincreasedby) + " pts").show()
-    #playsound(pointsgainedmp3)
+    playsound(pointsgainedmp3)
 elif(pointsincreasedby < 0):
     notify2.Notification("Lost " + str(pointsincreasedby) + " pts").show()
-    #playsound(pointsgainedmp3)
+    playsound(pointsgainedmp3)
 file = open(str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt", "w")
 for done in questionsdone:
     file.write(done + "\n")
