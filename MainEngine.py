@@ -14,7 +14,7 @@ import gi
 import argparse
 import notify2
 from playsound import playsound   #Musicib
-
+import pwd
 
 
 pointsgainedmp3 = str(pathlib.Path(__file__).parent.absolute()) +"/sounds/PointsGained.mp3"

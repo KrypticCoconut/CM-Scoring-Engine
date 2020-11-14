@@ -4,7 +4,8 @@ import sys
 import re
 import configparser
 import pathlib
-
+import grp
+import pwd
 
 file = str(pathlib.Path(__file__).parent.absolute()) + '/config.ini'
 config = configparser.RawConfigParser()
@@ -256,3 +257,57 @@ def IfNotOutput(section, inputs): #return true true if command gives any output 
                 if(not subprocess.check_output(command + " || true", shell=True)):
                     return True
             return False
+
+
+#------------------------------------------------------------------------NEW FUNCTION-------------------------------------------------------------------------------
+
+
+def UserExists(section, inputs):
+    requiredinputs = ["Type",  "user", "function", "description", "points"]
+    if(checkenoughinputs(inputs, requiredinputs)):
+        pass
+    else:
+        return "missing/extra input for section " + section
+    Type = config[section]["Type"]
+    user = config[section]["User"]
+    if(Type == "Exists"):
+        try:
+            pwd.getpwnam(user)
+            return True
+        except KeyError:
+            return False
+    if(Type == "NotExists"):
+        try:
+            pwd.getpwnam(user)
+            return False
+        except KeyError:
+            return True
+    else:
+        return "Unkown Type in section: "+section
+
+#------------------------------------------------------------------------NEW FUNCTION-------------------------------------------------------------------------------
+
+
+
+def GroupExists(section, inputs):
+    requiredinputs = ["Type",  "group", "function", "description", "points"]
+    if(checkenoughinputs(inputs, requiredinputs)):
+        pass
+    else:
+        return "missing/extra input for section " + section
+    Type = config[section]["Type"]
+    group = config[section]["Group"]
+    if(Type == "Exists"):
+        try:
+            grp.getgrnam(group)
+            return True
+        except KeyError:
+            return False
+    if(Type == "NotExists"):
+        try:
+            grp.getgrnam(group)
+            return False
+        except KeyError:
+            return True
+    else:
+        return "Unkown Type in section: "+section
