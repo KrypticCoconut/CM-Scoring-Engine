@@ -13,13 +13,25 @@ Refer to wiki for usage
 ## Installation
 Installation is simple enough
 
+Download packages requires
 ```
-sudo apt-get install git python3 python3-pip python-gobject libnotify-bin libnotify-dev # ubuntu 20
-sudo apt-get install python3-pip python3 python-gobject libnotify-bin libnotify-dev libnotify-cil-dev git #ubuntu 18
-pip3 install playsound
-sudo pip3 install playsound
+sudo apt-get install git python3 python3-pip python-gobject libnotify-bin libnotify-dev notification-daemon # ubuntu 20
+sudo apt-get install python3-pip python3 python-gobject libnotify-bin libnotify-dev libnotify-cil-dev git notification-daemon #ubuntu 18
+pip3 install playsound notify2
+sudo -H pip3 install playsound notify2
+```
+configure notification daemon `sudo nano /usr/share/dbus-1/services/org.freedesktop.Notifications.service`
+and write this in that
+```
+[D-BUS Service]
+Name=org.freedesktop.Notifications
+Exec=/usr/lib/notification-daemon/notification-daemon
+```
+and install the engine, ez
+```
 cd /opt
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
+sudo reboot
 ```
 
 # Todo
