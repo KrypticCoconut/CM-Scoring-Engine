@@ -31,6 +31,7 @@ and install the engine, ez
 ```
 cd /opt
 git clone https://github.com/PineMaster/CM-Scoring-Engine.git
+sudo reboot
 ```
 
 # Todo
