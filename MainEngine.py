@@ -14,7 +14,6 @@ import gi
 import argparse
 import notify2
 from playsound import playsound   #Musicib
-import pwd
 
 
 pointsgainedmp3 = str(pathlib.Path(__file__).parent.absolute()) +"/sounds/PointsGained.mp3"
@@ -145,7 +144,7 @@ indexfile = """
         }
     </style>
     <head>
-        <title>Scoring Engine Result</title>
+        <title>Scoring Engine Result</title>:
     </head>
     <body>
         <br>
@@ -184,4 +183,3 @@ test = args.test
 if(test):
     print("hi")
     subprocess.check_output("rm -rf " + str(pathlib.Path(__file__).parent.absolute()) + "/TmpData/answered.txt 2>/dev/null || true", shell=True)
-
